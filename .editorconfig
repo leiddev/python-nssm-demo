@@ -1,0 +1,25 @@
+# 统一编辑器行为，避免"换行符/编码不一致"引发的假 diff。
+# 最关键的一条：*.ps1 必须存成 UTF-8 **with BOM**，
+# 否则 Windows PowerShell 5.1 会按 GBK 解码中文并报假语法错（README 坑 1）。
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+# ⚠️ 这三个脚本必须带 BOM，改这项等于把它们弄坏
+[*.ps1]
+charset = utf-8-bom
+
+[*.md]
+# Markdown 里行尾两个空格是"硬换行"，不能删
+trim_trailing_whitespace = false
+
+[*.py]
+indent_style = space
+indent_size = 4
+
+[{.gitignore,.gitattributes}]
+charset = utf-8

@@ -1,0 +1,27 @@
+# ── 运行时产物（服务自己写的，绝不入库）──
+logs/
+data/
+tests/_tmp/
+
+# ── 临时/测试残留 ──
+# 手工试验时爱用 _tmp_*.ps1 之类的探针脚本，别误提交
+_tmp_*
+*.tmp
+*.bak
+*.orig
+*~
+
+# ── Python ──
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+.pytest_cache/
+
+# ── 操作系统 / 编辑器 ──
+Thumbs.db
+Desktop.ini
+.DS_Store
+.vscode/
+.idea/

@@ -1,0 +1,27 @@
+# ── 换行符 ──
+# 本仓库的文本文件一律用 LF。
+# 显式声明是为了防止 Windows 编辑器把文件存成 CRLF 之后，
+# diff 里冒出一堆"整个文件被重写"的假改动。
+* text=auto eol=lf
+
+# ── 明确按二进制处理，不做任何转换 ──
+*.exe  binary
+*.dll  binary
+*.zip  binary
+*.7z   binary
+*.png  binary
+*.ico  binary
+
+# ── ⚠️ .ps1 必须保留 UTF-8 BOM（见 README 坑 1）──
+# 没有 BOM 时，Windows PowerShell 5.1 会按 GBK 去解码中文，
+# 结果是"中文把后面的引号吞掉" → 报出一个假的语法错误
+# （`意外的标记 }`）。所以：
+#   * 不要给 *.ps1 加任何会去掉 BOM 的处理；
+#   * 用编辑器另存时务必选 "UTF-8 with BOM"，别选 "UTF-8"。
+# 这里只声明行尾，不碰编码 —— git 会原样保留 BOM。
+*.ps1  text eol=lf
+
+# ── Git 自身的文件 ──
+.gitattributes  text eol=lf
+.gitignore      text eol=lf
+.editorconfig   text eol=lf
